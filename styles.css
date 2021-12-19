@@ -1,0 +1,106 @@
+* { font-family: 'Cairo', sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+.jumbotron-heading{
+  font-family: 'Amiri', sans-serif;
+  font-weight: 300;
+  font-size: 70pt;
+  color: #3a3a3a;
+  letter-spacing: -4px;
+}
+.dir-rtl { direction: rtl; }
+.dir-ltr { direction: ltr; }
+.jumbotron { 
+  background-color: #fff;
+  padding: 45px 20px; 
+}
+.experiment * {
+  transition: background-color 0.15s ease-in-out;
+  min-height: 2px;
+}
+.experiment div, .experiment span, 
+.experiment aside, .experiment nav,
+.experiment section, .experiment article {
+  min-height: 15px;
+}
+.experiment.selected-on * { 
+  border:rgba(0,0,0,0.05) 1px solid; 
+  padding-top: 4px !important; 
+  padding-bottom: 4px !important; 
+}
+[data-sclprt-highlight] {
+  cursor: pointer;
+  background-color: #ffefa3 !important;
+  background-image: url(bg-highlight.png);
+  box-shadow: 0 0 0 1px #fff6cb;
+}
+[data-sclprt-selected] {
+  cursor: pointer;
+  background-image: url(bg-highlight.png);
+  animation: selected 1.5s infinite;
+}
+[data-sclprt-selected-parent] {
+  outline: 2px dashed magenta !important;
+}
+@keyframes selected {
+  0%      { background-color: #beeaa5; 
+            box-shadow: 0 0 2px 2px #a7de88;
+            outline: 2px dashed #e7ffda;
+          }
+  50%     { background-color: #cafead; 
+            outline: 2px dashed #92c574;
+            box-shadow: 0 0 2px 2px #ddffca;
+          }
+  100%    { background-color: #beeaa5; 
+            box-shadow: 0 0 2px 2px #a7de88;
+            outline: 2px dashed #e7ffda;
+          }
+}
+.locator { 
+  border: 1px solid #cafead; 
+  background-color: #262e35;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+.locator .parent .tagname,
+.locator .parent .tagclosing { 
+  color: magenta; 
+  font-weight: bold;
+}
+.locator .itself { 
+  background-color: rgba(255,255,255,0.09);
+  padding: 1px 7px 3px;
+  border-radius: 3px;
+  margin: 2px -6px 1px;
+}
+.locator .itself .tagname,
+.locator .itself .tagclosing { 
+  color: #a4f773; 
+}
+.itself .idname,  .itself .classname,
+.parent .idname,  .parent .classname {
+  word-spacing: 3px; 
+  letter-spacing: 0.5px;
+  font-weight: 300;
+}
+.locator .highlighted small { 
+  margin: 5px 0 1px;
+  border-radius: 2px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.65) !important;
+  background-color: #fff3cd; 
+}
+.toolbar .btn-primary {
+  color: #fff;
+  background-color: #f4036e;
+  border-color: #f4036e;
+}
+.toolbar .btn-primary:hover {
+    color: #fff;
+    background-color: #f4036e;
+    border-color: #f4036e;
+}
+.toolbar .btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #f4036e;
+    border-color: #b0165e;
+}
