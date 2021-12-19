@@ -4,28 +4,28 @@ Online Web Visual DOM Editing Tool
 Destruction is much faster than construction, a universal rule you can rely on to design a web interface in the browser. Using Sculprit, you can use destruction to your advantage and construct something beneficial. You are enabled to swiftly knock down things you don't need from the code chunk, move things around, till you reach the build you seek. Just like in real-life sculpturing, you'll start with one big block of elements and components, some you want, some you don't. Chisel that block down to a purposeful block of hand-picked UI elements, and put it to good use. Sculprit is light and made with pure JavaScript.
  
 ### Foundation Stage
-  x Decide on name, purchase domain name, work on preliminary branding
-  x Delete            Alt + Click
-  x Select            Ctrl + Click
-  x Deselect          Escape
-  x Undo              RClick,         Ctrl + Z
-  x Redo              Ctrl + Y
-  x Cut               Ctrl + Mid-Click
-  x Copy              Shift + Mid-Click
-  x Paste             Mid-Click
-  x Move Up DOM       A, Arrow Left, 
-  x Move Down DOM     D, Arrow Right, 
-  x Move Over         A, Arrow Left, 
-  x Move Under        D, Arrow Right, 
-  x Exit Parent Up    W, Arrow Up
-  x Exit Parent Down  S, Arrow Down
-  x Paste clipboard into experiment area
-  x Save button saves the current file into a new HTML file with a specified name
-  x Decide on final controls
-  x Cut code into clipboard
-  x Skip Elements Up and Down
-  x Expanded Mode – allows you to see overlapping elements 
-  x Use tooltips to show an element's ID and class
+  - Decide on name, purchase domain name, work on preliminary branding
+  - Delete            Alt + Click
+  - Select            Ctrl + Click
+  - Deselect          Escape
+  - Undo              RClick,         Ctrl + Z
+  - Redo              Ctrl + Y
+  - Cut               Ctrl + Mid-Click
+  - Copy              Shift + Mid-Click
+  - Paste             Mid-Click
+  - Move Up DOM       A, Arrow Left, 
+  - Move Down DOM     D, Arrow Right, 
+  - Move Over         A, Arrow Left, 
+  - Move Under        D, Arrow Right, 
+  - Exit Parent Up    W, Arrow Up
+  - Exit Parent Down  S, Arrow Down
+  - Paste clipboard into experiment area
+  - Save button saves the current file into a new HTML file with a specified name
+  - Decide on final controls
+  - Cut code into clipboard
+  - Skip Elements Up and Down
+  - Expanded Mode – allows you to see overlapping elements 
+  - Use tooltips to show an element's ID and class
 
 ### Controls Basic Stage
   - Lay proper foundation for mouse and keyboard controls and how they should cascade
