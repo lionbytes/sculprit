@@ -13,10 +13,10 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Cut               Ctrl + Mid-Click~~
   - ~~Copy              Shift + Mid-Click~~
   - ~~Paste             Mid-Click~~
-  - ~~Move Up DOM       A, Arrow Left, ~~
-  - ~~Move Down DOM     D, Arrow Right, ~~
-  - ~~Move Over         A, Arrow Left, ~~
-  - ~~Move Under        D, Arrow Right, ~~
+  - ~~Move Up DOM       A, Arrow Left,~~
+  - ~~Move Down DOM     D, Arrow Right,~~
+  - ~~Move Over         A, Arrow Left,~~
+  - ~~Move Under        D, Arrow Right,~~
   - ~~Exit Parent Up    W, Arrow Up~~
   - ~~Exit Parent Down  S, Arrow Down~~
   - ~~Paste clipboard into experiment area~~
@@ -24,7 +24,7 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Decide on final controls~~
   - ~~Cut code into clipboard~~
   - ~~Skip Elements Up and Down~~
-  - ~~Expanded Mode – allows you to see overlapping elements ~~
+  - ~~Expanded Mode – allows you to see overlapping elements~~
   - ~~Use tooltips to show an element's ID and class~~
 
 ### Controls Basic Stage
