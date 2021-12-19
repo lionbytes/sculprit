@@ -1,6 +1,4 @@
-# Sculprit / Chisel Down
-Online Web Visual DOM Editing Tool
-  
+# Sculprit / Chisel Down  
 Destruction is much faster than construction, a universal rule you can rely on to design a web interface in the browser. Using Sculprit, you can use destruction to your advantage and construct something beneficial. You are enabled to swiftly knock down things you don't need from the code chunk, move things around, till you reach the build you seek. Just like in real-life sculpturing, you'll start with one big block of elements and components, some you want, some you don't. Chisel that block down to a purposeful block of hand-picked UI elements, and put it to good use. Sculprit is light and made with pure JavaScript.
  
 ### Foundation Stage
