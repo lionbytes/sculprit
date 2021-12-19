@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+
+  Sculprit / Chisel Down
+
+  Destruction is much faster than construction, a universal rule you can rely on to design a web interface in the browser. Using Sculprit, you can use destruction to your advantage and construct something beneficial. You are enabled to swiftly knock down things you don't need from the code chunk, move things around, till you reach the build you seek. Just like in real-life sculpturing, you'll start with one big block of elements and components, some you want, some you don't. Chisel that block down to a purposeful block of hand-picked UI elements, and put it to good use. Sculprit is light and made with pure JavaScript.
+ 
+  Foundation Stage
+    x Decide on name, purchase domain name, work on preliminary branding
+    x Delete            Alt + Click
+    x Select            Ctrl + Click
+    x Deselect          Escape
+    x Undo              RClick,         Ctrl + Z
+    x Redo              Ctrl + Y
+    x Cut               Ctrl + Mid-Click
+    x Copy              Shift + Mid-Click
+    x Paste             Mid-Click
+    x Move Up DOM       A, Arrow Left, 
+    x Move Down DOM     D, Arrow Right, 
+    x Move Over         A, Arrow Left, 
+    x Move Under        D, Arrow Right, 
+    x Exit Parent Up    W, Arrow Up
+    x Exit Parent Down  S, Arrow Down
+    x Paste clipboard into experiment area
+    x Save button saves the current file into a new HTML file with a specified name
+    x Decide on final controls
+    x Cut code into clipboard
+    x Skip Elements Up and Down
+    x Expanded Mode – allows you to see overlapping elements 
+    x Use tooltips to show an element's ID and class
+
+  Controls Basic Stage
+    - Lay proper foundation for mouse and keyboard controls and how they should cascade
+    - Distribute code to CSS, JS, HTML and JSON files
+    - Edit              Double click
+    - Redo              Shift + RClick
+    - Direction RTL/LTR
+    - Click again deselects
+    - Expanded Mode (keyboard) – allows you to see overlapping elements 
+    - Turn some toolbar buttons into toggles
+    - Text left radio button uses default CSS files, and text right radio button uses custom RTL CSS files
+    - Copy Code to Clipboard (keyboard)
+    - Paste Code from Clipboard (keyboard)
+    - Save (keyboard)
+    - Float Left/Right/None
+    - Size Up/Down
+    - Margin
+    - Padding
+    - Viewport Cycle
+    - Variate Style Primary 
+    - Variate Style Secondary 
+    - Variate Style Tertiary 
+    
+  Controls Advanced Stage
+    - History: Enable saving certain states of code structure using an M memory button
+    - Erase
+    - Multiple Select
+    - Toggle to turn Sculprit on and off in the playground area
+    - Autosave; automatically back up latest progress in the background to avert disasters and user outrage
+    
+  Test Stage
+    - Use app at work
+    - Unit testing
+
+  Library Stage
+    - Reckon Bootstrap 4 utilities and options
+    - Add only most important elements from Bootstrap 4's exhaustive library
+    - Add elements from Intajy's exhaustive library  
+    
+  Aesthetics Stage
+    - Decide on app's sitemap structure (e.g. Landing page main tool separate from library)
+    - Display action bubbles on action for assertion and indication
+    - Random background images on highlight
+    - Branding: video game-inspired – as its controls are.
+    - Enhance logo's look
+    
+  Monetization Stage
+    - Enable creation of user accounts using Django
+    - Distribute code to Sass, JS, HTML and JSON files
+  
+  Site Creation Stage
+    - Plus button adds elements; incorporate Ebryo concept.
+    - Add elements from Bootstrap 4's exhaustive library
+    - Back link saved files to each other and create a tree
+    - Create paid Chrome extension 
+    - Make sure app works agnosticly to whether framework exists or not
+  
+  More Frameworks
+    - Add Material framework
+    - Add Foundation framework
+  
+  --><head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Cairo:200,300,400,600,700,900|Changa:200,300,400,500,600,700,800|El+Messiri:400,500,600,700|Reem+Kufi&amp;display=swap&amp;subset=arabic,cyrillic,latin-ext" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <title>Sculprit</title>
+  
+  <style>
+    * { font-family: 'Cairo', sans-serif; }
+    h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+    .jumbotron-heading{
+      font-family: 'Amiri', sans-serif;
+      font-weight: 300;
+      font-size: 70pt;
+      color: #3a3a3a;
+      letter-spacing: -4px;
+    }
+    .dir-rtl { direction: rtl; }
+    .dir-ltr { direction: ltr; }
+    .jumbotron { 
+      background-color: #fff;
+      padding: 45px 20px; 
+    }
+    .experiment * {
+      transition: background-color 0.15s ease-in-out;
+      min-height: 2px;
+    }
+    .experiment div, .experiment span, 
+    .experiment aside, .experiment nav,
+    .experiment section, .experiment article {
+      min-height: 15px;
+    }
+    .experiment.selected-on * { 
+      border:rgba(0,0,0,0.05) 1px solid; 
+      padding-top: 4px !important; 
+      padding-bottom: 4px !important; 
+    }
+    [data-sclprt-highlight] {
+      cursor: pointer;
+      background-color: #ffefa3 !important;
+      background-image: url(bg-highlight.png);
+      box-shadow: 0 0 0 1px #fff6cb;
+    }
+    [data-sclprt-selected] {
+      cursor: pointer;
+      background-image: url(bg-highlight.png);
+      animation: selected 1.5s infinite;
+    }
+    [data-sclprt-selected-parent] {
+      outline: 2px dashed magenta !important;
+    }
+    @keyframes selected {
+      0%      { background-color: #beeaa5; 
+                box-shadow: 0 0 2px 2px #a7de88;
+                outline: 2px dashed #e7ffda;
+              }
+      50%     { background-color: #cafead; 
+                outline: 2px dashed #92c574;
+                box-shadow: 0 0 2px 2px #ddffca;
+              }
+      100%    { background-color: #beeaa5; 
+                box-shadow: 0 0 2px 2px #a7de88;
+                outline: 2px dashed #e7ffda;
+              }
+    }
+    .locator { 
+      border: 1px solid #cafead; 
+      background-color: #262e35;
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+      z-index: 9999;
+    }
+    .locator .parent .tagname,
+    .locator .parent .tagclosing { 
+      color: magenta; 
+      font-weight: bold;
+    }
+    .locator .itself { 
+      background-color: rgba(255,255,255,0.09);
+      padding: 1px 7px 3px;
+      border-radius: 3px;
+      margin: 2px -6px 1px;
+    }
+    .locator .itself .tagname,
+    .locator .itself .tagclosing { 
+      color: #a4f773; 
+    }
+    .itself .idname,  .itself .classname,
+    .parent .idname,  .parent .classname {
+      word-spacing: 3px; 
+      letter-spacing: 0.5px;
+      font-weight: 300;
+    }
+    .locator .highlighted small { 
+      margin: 5px 0 1px;
+      border-radius: 2px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.65) !important;
+      background-color: #fff3cd; 
+    }
+    .toolbar .btn-primary {
+      color: #fff;
+      background-color: #f4036e;
+      border-color: #f4036e;
+    }
+    .toolbar .btn-primary:hover {
+        color: #fff;
+        background-color: #f4036e;
+        border-color: #f4036e;
+    }
+    .toolbar .btn-primary.disabled, .btn-primary:disabled {
+        color: #fff;
+        background-color: #f4036e;
+        border-color: #b0165e;
+    }
+
+  </style>
+</head>
+
+<body style="background-color: rgb(52 58 64);">
+  <main role="main">
+    <section class="jumbotron mb-0 py-4" style="background-color: #1d2c3a;">
+      <div class="container">
+    <div class="row">
+        <div class="px-3">
+        <h1 class="m-0"><img src="logo5-dark.png" alt="Sculprit">
+
+</h1>
+        <p class="lead mx-auto text-center mb-1" style="max-width: 740px;font-size: 13pt;color: #747c85 !important;">
+Visual DOM Sculptor
+</p>
+        </div>
+        <div class="col">
+      <pre class="text-light pt-3 px-5" style="
+    column-count: 2;
+    column-gap: 20px;
+    list-style-position: inside;
+    font-family: monospace;
+    font-weight: bold;
+    column-rule: 1px solid #3f4750;
+">Select            Ctrl + Click
+Deselect          Escape
+Delete            Alt + Click
+Undo              Ctrl + Z
+Redo              Ctrl + Y
+Cut               Ctrl + Mid-Click
+Copy              Shift + Mid-Click
+Paste             Mid-Click
+Move Up DOM       A, Arrow Left, 
+Move Down DOM     D, Arrow Right, 
+Move Over         A, Arrow Left, 
+Move Under        D, Arrow Right, 
+Exit Parent Up    W, Arrow Up
+Exit Parent Down  S, Arrow Down</pre><div class="text-light pt-2 px-5 mb-0" style="
+    font-family: monospace;
+"><span class="badge badge-primary position-relative ml-0" style="
+    background: #c3f4a8;
+    font-size: 7pt;
+    top: -2px;
+">&nbsp;&nbsp;&nbsp;</span> Selected <span class="badge badge-primary position-relative ml-4" style="
+    background: #f02dff;
+    font-size: 7pt;
+    top: -2px;
+">&nbsp;&nbsp;&nbsp;</span> Parent <span class="badge badge-primary position-relative ml-4" style="
+    background: #ffe38c;
+    font-size: 7pt;
+    top: -2px;
+">&nbsp;&nbsp;&nbsp;</span> Hovered</div></div></div>
+</div>
+    </section>
+    <div class="toolbar card-header text-white" style="background-color: #243444;">
+            <div class="container">
+<div class="row">
+              <div class="col my-1" style="font-size: 13pt;">
+                <span>Sculprit Toolbar</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm mx-1 add disabled" disabled=""><span class="fa fa-plus"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 library disabled" disabled=""><span class="fa fa-th"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 memo disabled" disabled=""><strong>M</strong></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 save" onclick="saveFile();"><span class="fa fa-save"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 pastecode" onclick="pasteClipboard();"><span class="fa fa-paste"></span></button>
+              
+              <button type="button" class="btn btn-primary btn-sm mx-1 expand" onclick="a_ExpandMode();"><span class="fa fa-arrows-alt"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 dirltr" onclick="dirLeft();"><span class="fa fa-align-left"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 dirrtl" onclick="dirRight();"><span class="fa fa-align-right"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 compress" onclick="compressExp();"><span class="fa fa-compress"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 expand" onclick="expandExp();"><span class="fa fa-expand"></span></button>
+              
+              <button type="button" class="btn btn-primary btn-sm mx-1 undo" onclick="a_Undo();"><span class="fa fa-history"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 redo" onclick="a_Redo();"><span class="fa fa-repeat"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 copycode"><span class="fa fa-clone"></span> <span class="fa fa-code"></span></button>
+            </div></div>
+          </div><div class="container-fluid py-5 mb-4" style="background-color: #e9ecef;">
+      <div class="container marketing">
+        <div class="card">
+          
+          <div class="card-body">
+            <div id="experiment" class="experiment dir-ltr text-left">
+              <div class="locator position-absolute pt-2 px-3 rounded d-none" style="">
+                <div class="row">
+                  <div class="col-12 text-left">
+                    <div><small>
+                      <span class="mr-1 text-muted">Parent: </span>
+                      <span class="parent">
+                        <strong class="tagname "></strong>
+                        <span class="idname text-warning"></span>
+                        <span class="classname text-light"></span>
+                        <strong class="tagclosing  d-none" style="">/&gt;</strong>
+                      </span>
+                    </small></div>
+                    
+                    <div class="itself">                      
+                      <span class="tagname h6"></span>
+                      <span class="idname text-warning h6"></span>
+                      <span class="classname text-light h6"></span>
+                      <span class="tagclosing h6 d-none" style="">/&gt;</span>
+                    </div>
+  
+                  </div>
+                </div>
+                <div class="row highlighted">
+                  <small class="col px-2">
+                    <span class="tagname">&lt;div</span>
+                    <span class="idname"> </span>
+                    <span class="classname"> .alert .alert-success</span>
+                    <span class="tagclosing d-none" style="">/&gt;</span>
+                  </small>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+                      longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                  </div>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span class="fa fa-times-circle"></span>
+                    <strong class="mx-1">Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <span class="fa fa-exclamation-triangle"></span>
+                    <strong class="mx-1">Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <form class="mb-3">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Address 2</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected="">Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
+
+              <div class="card-columns">
+                <div class="card">
+                  <h5 class="card-header">Featured</h5>
+                  <div class="card-body">
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <h5 class="card-header">Featured</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+                  <div class="card p-3">
+                    <blockquote class="blockquote mb-0 card-body">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                      <footer class="blockquote-footer">
+                        <small class="text-muted">
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </small>
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="card">
+                    <img class="card-img-top" src="http://placehold.it/500x200" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                  <div class="card bg-primary text-white text-center p-3">
+                    <blockquote class="blockquote mb-0">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                      <footer class="blockquote-footer">
+                        <small>
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </small>
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img class="card-img" src="http://placehold.it/600x400" alt="Card image">
+                  </div>
+                  <div class="card p-3 text-right">
+                    <blockquote class="blockquote mb-0">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                      <footer class="blockquote-footer">
+                        <small class="text-muted">
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </small>
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script>
+    
+    body = document.getElementsByTagName('body')[0];
+    let expArea = document.getElementsByClassName('experiment')[0];
+    
+    let statePrev = expArea.innerHTML;
+    let stateLatest = expArea.innerHTML;
+
+    let stateIndex = 0;
+    let htmlHistory = [];
+    htmlHistory[0] = expArea.innerHTML;
+    // console.log("stateIndex: ", stateIndex, "Array: ", htmlHistory.length);
+
+    let storedBG;
+    let selectedElement;
+    
+    function captureChange(){
+      htmlHistory = htmlHistory.slice(0, stateIndex + 1);
+      stateIndex = htmlHistory.push(expArea.innerHTML) - 1;
+    }
+    function getClasses(element) {
+      let classes = "";
+      element.classList.forEach( item => classes += ' .' + item );
+      return classes;
+    }
+    function locatorUpdate(element) {
+      const locator = document.querySelector('.locator');
+      if (element) {
+        locator.querySelector('.itself .tagname').textContent = `<${element.tagName.toLowerCase()}`;
+        locator.querySelector('.itself .idname').textContent = element.id ? `#${element.id}` : ' ';
+        locator.querySelector('.itself .classname').textContent = getClasses(element);
+
+        locator.querySelector('.parent .tagname').textContent = `<${element.parentNode.tagName.toLowerCase()}`;
+        locator.querySelector('.parent .idname').textContent = element.parentNode.id ? `#${element.parentNode.id}` : ' ';
+        locator.querySelector('.parent .classname').textContent = getClasses(element.parentNode);
+
+        locator.querySelectorAll('.tagclosing').forEach(item => item.style = "display: inline !important");
+      } else {
+        locator.querySelector('.itself .tagname').textContent = '';
+        locator.querySelector('.itself .idname').textContent = '';
+        locator.querySelector('.itself .classname').textContent = '';
+
+        locator.querySelector('.parent .tagname').textContent = '';
+        locator.querySelector('.parent .idname').textContent = '';
+        locator.querySelector('.parent .classname').textContent = '';
+
+        locator.querySelectorAll('.tagclosing').forEach(item => item.style = "");
+        locatorOff();
+      }
+    }
+    function locatorOn() {
+      const locator = document.querySelector('.locator')
+      locator.classList.remove('d-none');
+      locator.style = ` top:${event.pageY-322}px; left: ${event.pageX-130}px;`;
+    }
+    function locatorOff() {
+      const locator = document.querySelector('.locator')
+      locator.classList.add('d-none');
+      locator.style = "";
+    }
+    function getHighlightedItem() {
+      return document.querySelector('[data-sclprt-highlight]');
+    }
+    function getSelectedItem() {
+      return document.querySelector('[data-sclprt-selected]');
+    }
+
+    /*===================================================
+      ===================== Actions =====================
+      ===================================================*/
+
+    // Undo
+    function a_Undo(){
+      if ( stateIndex > 0 ){
+        stateIndex -= 1;
+        expArea.innerHTML = htmlHistory[stateIndex];
+      }
+    }
+    // Redo
+    function a_Redo(){
+      if ( stateIndex < htmlHistory.length - 1 ){
+        stateIndex += 1;
+        expArea.innerHTML = htmlHistory[stateIndex];
+      }
+    }
+    // Select
+    function a_Select (event_target) {
+      let element = getSelectedItem();
+      locatorUpdate(event_target);
+      locatorOn();
+      if (element) { 
+        element.removeAttribute('data-sclprt-selected');
+        element.parentNode.removeAttribute('data-sclprt-selected-parent');
+      }
+      event_target.setAttribute('data-sclprt-selected','true');
+      event_target.parentNode.setAttribute('data-sclprt-selected-parent','true');
+
+    }
+    // Deselect
+    function a_Deselect() {
+      elements = document.querySelectorAll('[data-sclprt-selected]');
+      elements.forEach( element => {
+        element.removeAttribute('data-sclprt-selected');
+        element.parentNode.removeAttribute('data-sclprt-selected-parent');
+      });
+      locatorUpdate();
+    }
+    // Expand Mode
+    function a_ExpandMode() {
+      expArea.classList.toggle("selected-on");
+    }
+    // Toggle Highlight
+    function a_ToggleHighlight(event_target) {
+      if (window.event.ctrlKey || window.event.altKey || window.event.shiftKey ) {  
+        event_target.setAttribute('data-sclprt-highlight','true');
+        if (getSelectedItem()) locatorOn();
+      } else {
+        a_Unhighlight(event_target);
+        locatorOff();
+      }
+    }
+    // Unhighlight
+    function a_Unhighlight(event_target) {
+      event_target.removeAttribute('data-sclprt-highlight');
+    }
+    // Delete
+    function a_Delete(event_target) {
+      event_target.parentNode.removeChild(event_target);
+      captureChange();
+      selectedElement = ""; 
+    }
+    // Copy
+    function a_Copy(event_target) {
+      selectedElement = event_target.cloneNode(true);
+    }
+    // Cut
+    function a_Cut(event_target) {
+      a_Copy(event_target);
+      event_target.parentNode.removeChild(event_target);
+      captureChange();
+    }
+    // Paste
+    function a_Paste(event_target) {
+      selectedElement = selectedElement.cloneNode(true);
+      event_target.parentNode.insertBefore(selectedElement, event_target);
+      captureChange();
+    }
+    // Move Up
+    function a_MoveUp() {
+      selectedElement = getSelectedItem();
+      selectedElement.parentNode.insertBefore(selectedElement, selectedElement.previousSibling);
+    }
+    // Move Down
+    function a_MoveDown() {
+      selectedElement = getSelectedItem();
+      selectedElement.parentNode.insertBefore(selectedElement.nextSibling, selectedElement);
+    }
+    // Move Over
+    function a_MoveOver() {
+      selectedElement = getSelectedItem();
+      selectedElement.parentNode.insertBefore(selectedElement, selectedElement.previousElementSibling);
+    }
+    // Move Under
+    function a_MoveUnder() {
+      selectedElement = getSelectedItem();
+      selectedElement.parentNode.insertBefore(selectedElement.nextElementSibling, selectedElement);
+    }
+    // Move Out
+    function a_MoveOut() {
+      selectedElement = getSelectedItem();
+      selectedElement.parentNode.parentNode.insertBefore(selectedElement, selectedElement.parentNode);
+    }
+    // Move In
+    function a_MoveIn() {
+      selectedElement = getSelectedItem();
+      selectedElement.nextElementSibling.insertBefore(selectedElement, selectedElement.nextElementSibling.firstChild);
+    }
+
+    /*===================================================
+      ================ Control Listeners ================
+      ===================================================*/
+
+    // Ctrl + Click: Select
+    // Alt  + Click: Delete
+    expArea.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (window.event.ctrlKey) { 
+        a_Select (event.target);
+      } else if (window.event.altKey) {
+        a_Delete(event.target);
+      }
+    });
+
+    // RClick: Undo
+    expArea.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+      a_Undo();
+    });
+
+    // Mid-Click: Cut-Copy-Paste
+    expArea.addEventListener('mousedown', (event) => {
+      if (typeof event === 'object') { 
+        if (event.button === 1) { 
+          event.preventDefault();
+
+          // Copy: Shift + Mid-Click
+          if (window.event.shiftKey) { a_Copy(event.target); }
+          // Cut: Alt + Mid-Click
+          else if (window.event.altKey) { a_Cut(event.target); } 
+          // Paste: Mid-Click
+          else { a_Paste(event.target); } 
+        }
+      }
+    });
+    
+    // Mouse Move: Toggle Element Highlight
+    expArea.addEventListener('mousemove', (event) => {
+      event.preventDefault();
+      a_ToggleHighlight(event.target);
+      element = getHighlightedItem();
+      const locator = document.querySelector('.locator');
+      locator.querySelector('.highlighted .tagname').textContent = `<${element.tagName.toLowerCase()}`;
+      locator.querySelector('.highlighted .idname').textContent = element.id ? `#${element.id}` : ' ';
+      locator.querySelector('.highlighted .classname').textContent = getClasses(element);
+
+    });
+
+    // Mouse Out: Unhighlight Element
+    expArea.addEventListener('mouseout', (event) => {
+      event.preventDefault();
+      a_Unhighlight(event.target)
+    });
+
+    // Ctrl Keyboard Controls
+    let keysPressed = {};
+    document.addEventListener('keydown', (event) => {
+      keysPressed[event.key] = true;
+      // Undo
+      if (keysPressed['Control'] && event.key == 'z') { 
+        a_Undo(); 
+      }
+      // Redo
+      else if (keysPressed['Control'] && event.key == 'y') { 
+        a_Redo();
+      }
+      // Move Out
+      else if (keysPressed['Control'] && (event.key == 'ArrowUp' || event.key == 'ArrowLeft')) { 
+        event.preventDefault();
+        a_MoveOut();
+        captureChange();
+      }
+      // Move In
+      else if (keysPressed['Control'] && (event.key == 'ArrowDown' || event.key == 'ArrowRight')) { 
+        event.preventDefault();
+        a_MoveIn();
+        captureChange();
+      }
+      // Move Over
+      else if (keysPressed['Shift'] && (event.key == 'ArrowUp' || event.key == 'ArrowRight')) { 
+        event.preventDefault();
+        a_MoveOver();
+        captureChange();
+      }
+      // Move Under
+      else if (keysPressed['Shift'] && (event.key == 'ArrowDown' || event.key == 'ArrowLeft')) { 
+        event.preventDefault();
+        a_MoveUnder();
+        captureChange();
+      }
+      locatorUpdate(getSelectedItem());      
+    });
+
+    // Move Element
+    document.addEventListener('keydown', (event) => {
+      // Move Up
+      if (event.key == 'ArrowUp' || event.key == 'ArrowLeft') { 
+        event.preventDefault();
+        a_MoveUp();
+        captureChange();
+      }
+      // Move Down
+      else if (event.key == 'ArrowDown' || event.key == 'ArrowRight') { 
+        event.preventDefault();
+        a_MoveDown();
+        captureChange();
+      }
+      // Deselect Element
+      else if (event.key == 'Escape') { 
+        a_Deselect();
+      }
+      // Deselect Element
+      else if (event.key == 'CapsLock') { 
+        a_ExpandMode();
+      }
+    });
+    document.addEventListener('keyup', (event) => {
+       delete keysPressed[event.key];
+    });
+
+    /*
+    // Scroll Up-Down
+    let scale = 12;
+    expArea.addEventListener('wheel', (event) => {
+      element = getSelectedItem();
+      event.preventDefault();
+      element.classList.remove(`col-${scale}`);
+      scale += event.deltaY * -0.01;
+      scale = Math.min(Math.max(1, scale), 12);
+      element.classList.add(`col-${scale}`);
+      captureChange();      
+    }, false); 
+    */
+
+    /*===================================================
+      ================= File Operations =================
+      ===================================================*/
+      
+    // Copy results to clipboard
+    let copycodeBtn = document.querySelector('button.copycode');
+    copycodeBtn.addEventListener('click', (event) => {
+      let copyText = htmlHistory[stateIndex];
+      let clipboardTemp = document.createElement("textarea");
+      document.body.appendChild(clipboardTemp);
+      clipboardTemp.value = copyText;
+      clipboardTemp.select();
+      document.execCommand("copy");
+      window.setTimeout(document.body.removeChild(clipboardTemp), 5000);
+    });
+
+    // Save whole HTML file
+    function saveFile() {
+      var htmlContent = [ '<!DOCTYPE html><html lang="en">'
+                          + document.getElementsByTagName('html')[0].innerHTML 
+                          + '</html'];
+      var bl = new Blob(htmlContent, {type: "text/html"});
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(bl);
+      a.download = "filename.html";
+      a.hidden = true;
+      document.body.appendChild(a);
+      a.innerHTML = "something random - nobody will see this, it doesn't matter what you put here";
+      a.click();
+    };
+    
+    // Paste clipboard
+    async function pasteClipboard() {
+      const copiedCode = await navigator.clipboard.readText();
+      expArea.innerHTML = copiedCode;
+      captureChange();
+    }
+    
+    const dirRight = () => {
+      document.querySelector(".experiment").classList.remove("dir-ltr", "text-left" );
+      document.querySelector(".experiment").classList.add("dir-rtl", "text-right");
+    }
+
+    const dirLeft = () => {
+      document.querySelector(".experiment").classList.remove("dir-rtl", "text-right");
+      document.querySelector(".experiment").classList.add("dir-ltr", "text-left" );
+    }
+
+    const expandExp = () => {
+      document.querySelector(".experiment").parentNode.parentNode.parentNode.classList.remove("container");
+      document.querySelector(".experiment").parentNode.parentNode.parentNode.classList.add("container-fluid" );
+    }
+
+    const compressExp = () => {
+      document.querySelector(".experiment").parentNode.parentNode.parentNode.classList.remove("container-fluid" );
+      document.querySelector(".experiment").parentNode.parentNode.parentNode.classList.add("container");
+    }
+    
+  </script>
+
+
+</body></html>
