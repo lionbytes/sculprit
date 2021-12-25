@@ -31,8 +31,6 @@ function locatorUpdate(element) {
     locator.querySelector('.parent .tagname').textContent = `<${element.parentNode.tagName.toLowerCase()}`;
     locator.querySelector('.parent .idname').textContent = element.parentNode.id ? `#${element.parentNode.id}` : ' ';
     locator.querySelector('.parent .classname').textContent = getClasses(element.parentNode);
-
-    locator.querySelectorAll('.tagclosing').forEach(item => item.style = "display: inline !important");
   } else {
     locator.querySelector('.itself .tagname').textContent = '';
     locator.querySelector('.itself .idname').textContent = '';
@@ -41,9 +39,6 @@ function locatorUpdate(element) {
     locator.querySelector('.parent .tagname').textContent = '';
     locator.querySelector('.parent .idname').textContent = '';
     locator.querySelector('.parent .classname').textContent = '';
-
-    locator.querySelectorAll('.tagclosing').forEach(item => item.style = "");
-    locatorOff();
   }
 }
 function locatorOn() {
@@ -83,20 +78,21 @@ function a_Redo(){
 }
 // Select
 function a_Select (event_target) {
-  let element = getSelectedItem();
-  locatorUpdate(event_target);
-  locatorOn();
-  if (element) { 
-    element.removeAttribute('data-sclprt-selected');
-    element.parentNode.removeAttribute('data-sclprt-selected-parent');
+  if(event_target.id !== "experiment" && !event_target.classList.contains("experiment")) {
+    let element = getSelectedItem();
+    locatorUpdate(event_target);
+    locatorOn();
+    if (element) { 
+      element.removeAttribute('data-sclprt-selected');
+      element.parentNode.removeAttribute('data-sclprt-selected-parent');
+    }
+    const sfx_prod = new Audio("prod.wav");
+    sfx_prod.volume = 0.3;
+    sfx_prod.play();
+
+    event_target.setAttribute('data-sclprt-selected','true');
+    event_target.parentNode.setAttribute('data-sclprt-selected-parent','true');
   }
-  const sfx_prod = new Audio("prod.wav");
-  sfx_prod.volume = 0.3;
-  sfx_prod.play();
-
-  event_target.setAttribute('data-sclprt-selected','true');
-  event_target.parentNode.setAttribute('data-sclprt-selected-parent','true');
-
 }
 // Deselect
 function a_Deselect() {
@@ -118,46 +114,63 @@ function a_ExpandMode() {
 }
 // Toggle Highlight
 function a_ToggleHighlight(event_target) {
-  if (window.event.ctrlKey || window.event.altKey || window.event.shiftKey ) {  
+    locatorOn();
     event_target.setAttribute('data-sclprt-highlight','true');
-    if (getSelectedItem()) locatorOn();
-  } else {
-    a_Unhighlight(event_target);
-    locatorOff();
-  }
+    document.querySelector("#selecteditem").style.display = (getSelectedItem()?  "block":"none");
 }
 // Unhighlight
 function a_Unhighlight(event_target) {
   event_target.removeAttribute('data-sclprt-highlight');
 }
-// Delete
-function a_Delete(event_target) {
-  event_target.classList.toggle("destroyed");
-  setTimeout(() => {
-    event_target.classList.toggle("destroyed");
-    event_target.parentNode.removeChild(event_target);
-  }, 100);
-  const sfx_destroy = new Audio("destroy.wav");
-  sfx_destroy.volume = 0.3;
-  sfx_destroy.play();
-  captureChange();
-  selectedElement = ""; 
-}
 // Copy
 function a_Copy(event_target) {
   selectedElement = event_target.cloneNode(true);
+  event_target.classList.add("copied");
+  setTimeout(() => {
+    event_target.classList.remove("copied");
+  }, 200);
 }
 // Cut
 function a_Cut(event_target) {
   a_Copy(event_target);
-  event_target.parentNode.removeChild(event_target);
+  event_target.classList.add("cut");
+  setTimeout(() => {
+    event_target.classList.remove("cut");
+    event_target.parentNode.removeChild(event_target);
+  }, 200);
+  const sfx_occur = new Audio("occur.wav");
+  sfx_occur.volume = 0.2;
+  sfx_occur.play();
   captureChange();
 }
 // Paste
 function a_Paste(event_target) {
   selectedElement = selectedElement.cloneNode(true);
   event_target.parentNode.insertBefore(selectedElement, event_target);
+  selectedElement.classList.add("pasted");
+  setTimeout(() => {
+    selectedElement.classList.remove("pasted");
+  }, 100);
+  a_MoveUnder();
+  const sfx_occur = new Audio("fyi.wav");
+  sfx_occur.volume = 0.2;
+  sfx_occur.play();
   captureChange();
+}
+// Delete
+function a_Delete(event_target) {
+  if(event_target.id !== "experiment" && !event_target.classList.contains("experiment")) {
+    event_target.classList.add("destroyed");
+    setTimeout(() => {
+      event_target.classList.remove("destroyed");
+      event_target.parentNode.removeChild(event_target);
+    }, 100);
+    const sfx_destroy = new Audio("destroy.wav");
+    sfx_destroy.volume = 0.3;
+    sfx_destroy.play();
+    captureChange();
+    selectedElement = ""; 
+  }
 }
 // Move Up
 function a_MoveUp() {
@@ -189,56 +202,97 @@ function a_MoveIn() {
   selectedElement = getSelectedItem();
   selectedElement.nextElementSibling.insertBefore(selectedElement, selectedElement.nextElementSibling.firstChild);
 }
+// Edit Text
+function a_EditText(event_target) {
+  let inputstr = prompt("", event_target.textContent);
+  if (inputstr === null) {
+    return;
+  }
+  event_target.textContent = inputstr;
+}
+// Edit Classes
+function a_EditClasses(event_target) {
+  let classstr = prompt("", event_target.className);
+  if (classstr === null) {
+    return;
+  }
+  let classlist = classstr.split(" ");
+  event_target.className = "";
+  classlist.forEach(classitem => {
+    event_target.classList.add(classitem);
+  });
+}
+// Edit ID
+function a_EditID(event_target) {
+  let idstr = prompt("", event_target.id);
+  if (idstr === null) {
+    return;
+  }
+  event_target.id = idstr;
+}
 
 /*===================================================
   ================ Control Listeners ================
   ===================================================*/
 
-// Ctrl + Click: Select
-// Alt  + Click: Delete
-expArea.addEventListener('click', (event) => {
-  event.preventDefault();
-  if (window.event.ctrlKey) { 
-    a_Select (event.target);
-  } else if (window.event.altKey) {
-    a_Deselect();
-    a_Delete(event.target);
-  }
-});
-
 // Double Click
 expArea.addEventListener('dblclick', (event) => {
   event.preventDefault();
-  if(event.target.textContent !== "") {
-    let input = prompt("", event.target.textContent);
-    if (input === null) {
-      return;
-    }
-    event.target.textContent = input;
+  if (window.event.ctrlKey) { 
+    a_EditClasses(event.target);
+  } else if (window.event.shiftlKey) { 
+    a_EditID(event.target);
+  } else {
+    a_EditText(event.target);
   }
 });
+
+// Click
+expArea.addEventListener('click', (event) => {
+  if (typeof event === 'object') { 
+    if (event.button === 0) {
+      event.preventDefault();
+      if (window.event.ctrlKey && window.event.shiftKey && window.event.altKey) { 
+        // Paste
+        a_Paste(event.target); 
+      } else if (window.event.ctrlKey && window.event.altKey) { 
+        // Cut
+        a_Cut(event.target); 
+      } else if (window.event.ctrlKey && window.event.shiftKey) {
+        // Copy: Click
+        a_Copy(event.target); 
+      } else if (window.event.altKey) {
+        // Delete
+        a_Deselect();
+        a_Delete(event.target);
+      } else if (window.event.ctrlKey) {
+        // Multi-select
+        getSelectedItem() === event.target? a_Deselect() : a_Select (event.target);
+      } else {
+        // Select\Deselect
+        getSelectedItem() === event.target? a_Deselect() : a_Select (event.target);
+      }
+    }
+  }
+});
+
+// Paste: Mid-Click
+expArea.addEventListener('mousedown', (event) => {
+  if (typeof event === 'object') { 
+    if (event.button === 1) { 
+      event.preventDefault();
+      a_Paste(event.target);
+    }
+  }
+});
+
+
 
 // RClick: Undo
 /*expArea.addEventListener('contextmenu', (event) => {
   event.preventDefault();
   a_Undo();
 });*/
-
-// Mid-Click: Cut-Copy-Paste
-expArea.addEventListener('mousedown', (event) => {
-  if (typeof event === 'object') { 
-    if (event.button === 1) { 
-      event.preventDefault();
-
-      // Copy: Shift + Mid-Click
-      if (window.event.shiftKey) { a_Copy(event.target); }
-      // Cut: Alt + Mid-Click
-      else if (window.event.altKey) { a_Cut(event.target); } 
-      // Paste: Mid-Click
-      else { a_Paste(event.target); } 
-    }
-  }
-});
 
 // Mouse Move: Toggle Element Highlight
 expArea.addEventListener('mousemove', (event) => {
@@ -277,7 +331,6 @@ document.addEventListener('keydown', (event) => {
       selectedElement.nextElementSibling || selectedElement.previousElementSibling || selectedElement.parentNode
     );
     a_Delete(selectedElement);
-    console.log('nextDelete', nextDelete);
     a_Select(nextDelete);   
     locatorOff();
   }
@@ -305,6 +358,27 @@ document.addEventListener('keydown', (event) => {
     a_MoveUnder();
     captureChange();
   }
+  // Copy selected
+  else if (keysPressed['Control'] && event.key == 'c') { 
+    event.preventDefault();
+    a_Copy(getSelectedItem());
+  }
+  // Cut selected
+  else if (keysPressed['Control'] && event.key == 'x') { 
+    event.preventDefault();
+    a_Cut(getSelectedItem());
+    a_Deselect();
+  }
+  // Paste selected
+  else if (keysPressed['Control'] && event.key == 'v') {
+    a_Paste(getSelectedItem());
+    a_Deselect();
+  }
+  // Paste selected
+  else if (event.key == 'F2') {
+    a_EditText(getSelectedItem());
+    a_Deselect();
+  }
   locatorUpdate(getSelectedItem());      
 });
 
@@ -325,6 +399,7 @@ document.addEventListener('keydown', (event) => {
   // Deselect Element
   else if (event.key == 'Escape') { 
     a_Deselect();
+    document.querySelector("#selecteditem").style.display = (getSelectedItem()?  "block":"none");
   }
   // Deselect Element
   else if (event.key == 'CapsLock') { 

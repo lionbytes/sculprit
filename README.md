@@ -26,26 +26,32 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Use tooltips to show an element's ID and class~~
 
 ### Controls Basic Stage
-  - Lay proper foundation for mouse and keyboard controls and how they should cascade
-  - Distribute code to CSS, JS, HTML and JSON files
-  - Edit              Double click
-  - Redo              Shift + RClick
-  - Direction RTL/LTR
+  - ~~Sticky toolbar~~
+  - ~~Distribute code to CSS, JS, HTML and JSON files~~
+  - ~~Edit              Double click~~
+  - ~~Redo              Shift + RClick (canceled)~~
+  - ~~Direction RTL/LTR~~
+  - ~~Expanded Mode (keyboard) – allows you to see overlapping elements~~
+  - ~~Lay proper foundation for mouse and keyboard controls and how they should cascade~~
   - Click again deselects
-  - Expanded Mode (keyboard) – allows you to see overlapping elements 
   - Turn some toolbar buttons into toggles
   - Text left radio button uses default CSS files, and text right radio button uses custom RTL CSS files
   - Copy Code to Clipboard (keyboard)
   - Paste Code from Clipboard (keyboard)
   - Save (keyboard)
+  - Move Up (Shift + Up)
+  - Move Down (Shift + Down)
+  - Move Out Up (Ctrl + Shift + Up)
+  - Move Out Down (Ctrl + Shift + Down)
+  - Margin (Ctrl + WASD)
+  - Padding (Ctrl + WASD)
+  - Size Height Up/Down
   - Float Left/Right/None
-  - Size Up/Down
-  - Margin
-  - Padding
   - Viewport Cycle
   - Variate Style Primary 
   - Variate Style Secondary 
   - Variate Style Tertiary 
+  - Locator always showing hovered element
 
 ### Controls Advanced Stage
   - History: Enable saving certain states of code structure using an M memory button

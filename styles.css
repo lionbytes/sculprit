@@ -26,6 +26,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
 .experiment * {
   transition: background-color 0.15s ease-in-out;
   min-height: 2px;
+  cursor: alias;
 }
 .experiment div, .experiment span, 
 .experiment aside, .experiment nav,
@@ -84,6 +85,38 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
             opacity: 0.5;
           }
 }
+.copied {
+  animation: copied 0.2s;
+}
+@keyframes copied {
+  0%     { opacity: 1.0; }
+  50%    { opacity: 0.0; }
+  100%   { opacity: 1.0; }
+}
+.cut {
+  animation: cut 0.2s;
+}
+@keyframes cut {
+  0%      { transform: scale(1.00); 
+            background-color: rgba(255,255,255,0.5); 
+            opacity: 1.0;
+          }
+  100%    { transform: scale(0.50); 
+            background-color: rgba(255,255,255,1.0);
+            opacity: 0.0;
+          }
+}
+.pasted {
+  animation: cut 0.1s;
+}
+@keyframes pasted {
+  0%      { transform: translate(10px, 0) scale(0.50); 
+            opacity: 0.0;
+          }
+  100%    { transform: translate(0px, 0) scale(1.00); 
+            opacity: 1.0;
+          }
+}
 
 .locator { 
   border: 1px solid #cafead; 
@@ -112,12 +145,12 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
   letter-spacing: 0.5px;
   font-weight: 300;
 }
-.locator .highlighted small { 
-  margin: 5px 0 1px;
+.locator .highlighted small {
+  margin: 1px 0;
   border-radius: 2px;
   font-weight: 600;
   color: rgba(0,0,0,0.65) !important;
-  background-color: #fff3cd; 
+  background-color: #fff3cd;
 }
 .toolbar .btn-primary {
   color: #fff;
