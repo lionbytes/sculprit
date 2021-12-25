@@ -1,4 +1,14 @@
+/*:active { cursor: url(boom.png), auto; }*/
 * { font-family: 'Cairo', sans-serif; }
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 h1,h2,h3,h4,h5,h6 { font-weight: bold; }
 .jumbotron-heading{
   font-family: 'Amiri', sans-serif;
@@ -23,7 +33,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
   min-height: 15px;
 }
 .experiment.selected-on * { 
-  border:rgba(0,0,0,0.05) 1px solid; 
+  border:rgba(0,0,0,0.1) 1px dashed;
   padding-top: 4px !important; 
   padding-bottom: 4px !important; 
 }
@@ -55,6 +65,26 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
             outline: 2px dashed #e7ffda;
           }
 }
+
+.destroyed {
+  animation: destroyed 0.1s;
+  box-shadow: 0 0 1px 1px #ddffca;
+}
+@keyframes destroyed {
+  0%      { transform: translate(-4px, -3px) scale(1.00); 
+            background-color: #beeaa5; 
+            opacity: 0.2;
+          }
+  50%     { transform: translate(2px, -2px) scale(1.00);  
+            background-color: transparent;
+            opacity: 1.0;
+          }
+  100%    { transform: translate(2px, 5px) scale(1.00); 
+            background-color: #beeaa5;
+            opacity: 0.5;
+          }
+}
+
 .locator { 
   border: 1px solid #cafead; 
   background-color: #262e35;

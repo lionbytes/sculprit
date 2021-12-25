@@ -90,6 +90,10 @@ function a_Select (event_target) {
     element.removeAttribute('data-sclprt-selected');
     element.parentNode.removeAttribute('data-sclprt-selected-parent');
   }
+  const sfx_prod = new Audio("prod.wav");
+  sfx_prod.volume = 0.3;
+  sfx_prod.play();
+
   event_target.setAttribute('data-sclprt-selected','true');
   event_target.parentNode.setAttribute('data-sclprt-selected-parent','true');
 
@@ -99,8 +103,13 @@ function a_Deselect() {
   elements = document.querySelectorAll('[data-sclprt-selected]');
   elements.forEach( element => {
     element.removeAttribute('data-sclprt-selected');
-    element.parentNode.removeAttribute('data-sclprt-selected-parent');
   });
+
+  parents = document.querySelectorAll('[data-sclprt-selected-parent]');
+  parents.forEach( parent => {
+    parent.removeAttribute('data-sclprt-selected-parent');
+  });
+
   locatorUpdate();
 }
 // Expand Mode
@@ -123,7 +132,14 @@ function a_Unhighlight(event_target) {
 }
 // Delete
 function a_Delete(event_target) {
-  event_target.parentNode.removeChild(event_target);
+  event_target.classList.toggle("destroyed");
+  setTimeout(() => {
+    event_target.classList.toggle("destroyed");
+    event_target.parentNode.removeChild(event_target);
+  }, 100);
+  const sfx_destroy = new Audio("destroy.wav");
+  sfx_destroy.volume = 0.3;
+  sfx_destroy.play();
   captureChange();
   selectedElement = ""; 
 }
@@ -185,15 +201,28 @@ expArea.addEventListener('click', (event) => {
   if (window.event.ctrlKey) { 
     a_Select (event.target);
   } else if (window.event.altKey) {
+    a_Deselect();
     a_Delete(event.target);
   }
 });
 
+// Double Click
+expArea.addEventListener('dblclick', (event) => {
+  event.preventDefault();
+  if(event.target.textContent !== "") {
+    let input = prompt("", event.target.textContent);
+    if (input === null) {
+      return;
+    }
+    event.target.textContent = input;
+  }
+});
+
 // RClick: Undo
-expArea.addEventListener('contextmenu', (event) => {
+/*expArea.addEventListener('contextmenu', (event) => {
   event.preventDefault();
   a_Undo();
-});
+});*/
 
 // Mid-Click: Cut-Copy-Paste
 expArea.addEventListener('mousedown', (event) => {
@@ -240,6 +269,17 @@ document.addEventListener('keydown', (event) => {
   // Redo
   else if (keysPressed['Control'] && event.key == 'y') { 
     a_Redo();
+  }
+  // Delete Selected
+  else if (event.key == 'Delete') { 
+    selectedElement = getSelectedItem();
+    let nextDelete = (
+      selectedElement.nextElementSibling || selectedElement.previousElementSibling || selectedElement.parentNode
+    );
+    a_Delete(selectedElement);
+    console.log('nextDelete', nextDelete);
+    a_Select(nextDelete);   
+    locatorOff();
   }
   // Move Out
   else if (keysPressed['Control'] && (event.key == 'ArrowUp' || event.key == 'ArrowLeft')) { 

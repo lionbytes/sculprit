@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Cairo:200,300,400,600,700,900|Changa:200,300,400,500,600,700,800|El+Messiri:400,500,600,700|Reem+Kufi&amp;display=swap&amp;subset=arabic,cyrillic,latin-ext" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <title>Sculprit – Online Visual DOM Editing Tool </title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="favicon.ico" type="image/x-icon" rel="icon">
+  <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+
+</head>
+
+<body style="background-color: #e9ecef;">
+  <main role="main">
+    <section class="mb-0 py-4" style="background-color: #1d2c3a;">
+      <div class="container">
+    <div class="row">
+        <div class="px-3">
+        <h1 class="m-0"><img src="logo5-dark.png" alt="Sculprit">
+
+</h1>
+        <p class="lead mx-auto text-center mb-1" style="max-width: 740px;font-size: 13pt;color: #747c85 !important;">
+Visual DOM Sculptor
+</p>
+        </div>
+        <div class="col">
+      <pre class="text-light pt-4 px-5" style="
+    column-count: 2;
+    column-gap: 20px;
+    list-style-position: inside;
+    font-family: monospace;
+    font-weight: bold;
+    column-rule: 1px solid #3f4750;
+">Select            Ctrl + Click
+Delete            Alt + Click
+Deselect          Esc
+Cut               Ctrl + Mid-Click
+Copy              Shift + Mid-Click
+Paste             Mid-Click
+Undo              Ctrl + Z
+Redo              Ctrl + Y
+Move Up DOM       Arrow Left/Up
+Move Down DOM     Arrow Right/Down
+Exit Parent Up    Ctrl + Arrow Left/Up
+Exit Parent Down  Ctrl + Arrow Right/Down</pre>
+<small class="text-light pt-2 px-5 mb-0" style="
+    font-family: monospace;
+"><span class="mr-3" style="
+    color: #6e7f91;
+">Cursor action indications:</span><span class="badge badge-primary position-relative ml-0" style="
+    background: #c3f4a8;
+    font-size: 7pt;
+    top: -2px;
+    outline: 2px dashed #609742;
+">&nbsp;&nbsp;&nbsp;</span> Selected <span class="badge badge-primary position-relative ml-4" style="
+    background: transparent;
+    font-size: 7pt;
+    top: -2px;
+    outline: 2px dashed #f02dff;
+">&nbsp;&nbsp;&nbsp;</span> Parent <span class="badge badge-primary position-relative ml-4" style="
+    background: #ffe38c;
+    font-size: 7pt;
+    top: -2px;
+">&nbsp;&nbsp;&nbsp;</span> Hovered</small></div></div>
+</div>
+    </section>
+    <div class="toolbar sticky-top card-header text-white" style="background-color: #243444;">
+            <div class="container">
+<div class="col"><div class="row">
+              <div class="col my-1" style="font-size: 13pt;color: #8a94a7;">
+                <span>Sculprit Toolbar</span>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm mx-1 add disabled" disabled=""><span class="fa fa-plus" title="Add new element"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 library disabled" disabled=""><span class="fa fa-th" title="Select a Bootstrap group element"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 memo disabled" disabled="" title="Memorize this version"><strong>M</strong></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 save" onclick="saveFile();"><span class="fa fa-save" title="Save file"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 pastecode" onclick="pasteClipboard();"><span class="fa fa-paste" title="Paste clipboard"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 expand" onclick="a_ExpandMode();"><span class="fa fa-arrows-alt" title="Expand element boundaries"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 dirltr" onclick="dirLeft();"><span class="fa fa-align-left" title="LTR"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 dirrtl" onclick="dirRight();"><span class="fa fa-align-right" title="RTL"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 compress" onclick="compressExp();"><span class="fa fa-compress" title="Bootstrap container"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 expand" onclick="expandExp();"><span class="fa fa-expand" title="Bootstrap container fluid"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 undo" onclick="a_Undo();"><span class="fa fa-history" title="Undow"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 redo" onclick="a_Redo();"><span class="fa fa-repeat" title="Redo"></span></button>
+              <button type="button" class="btn btn-primary btn-sm mx-1 copycode"><span class="fa fa-clone" title=""></span> <span class="fa fa-code" title="Copy current version"></span></button>
+            </div></div></div>
+            <audio id="sfx-destroy" src="destroy.wav" className="invisible"
+          ></audio>
+          </div>
+      <div class="container-fluid py-5 mb-4" style="background-color: #e9ecef;">
+      <div class="container marketing">
+        <div class="card">
+          
+          <div class="card-body">
+            <div class="locator position-absolute pt-2 px-3 rounded d-none">
+              <div class="row">
+                <div class="col-12 text-left">
+                  <div><small>
+                    <span class="mr-1 text-muted">Parent: </span>
+                    <span class="parent">
+                      <strong class="tagname "></strong>
+                      <span class="idname text-warning"></span>
+                      <span class="classname text-light"></span>
+                      <strong class="tagclosing  d-none">/&gt;</strong>
+                    </span>
+                  </small></div>
+                  
+                  <div class="itself">                      
+                    <span class="tagname h6"></span>
+                    <span class="idname text-warning h6"></span>
+                    <span class="classname text-light h6"></span>
+                    <span class="tagclosing h6 d-none">/&gt;</span>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row highlighted">
+                <small class="col px-2">
+                  <span class="tagname">&lt;div</span>
+                  <span class="idname"> </span>
+                  <span class="classname"> .col-12</span>
+                  <span class="tagclosing d-none">/&gt;</span>
+                </small>
+              </div>
+
+            </div>
+            <div id="experiment" class="experiment dir-ltr text-left">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+    <a class="navbar-brand" href="#">
+    <img src="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+  </nav>
+<div class="row">
+                <div class="col-12">
+                  <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+                      longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                  </div>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span class="fa fa-times-circle"></span>
+                    <strong class="mx-1">Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <span class="fa fa-exclamation-triangle"></span>
+                    <strong class="mx-1">Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 py-3">
+                <h1 class="text-dark" id="content">Introduction</h1>
+                <p class="bd-lead">Morbi id felis diam. Maecenas auctor pellentesque odio a porta. Integer fringilla sagittis elit in tempor. Etiam malesuada lectus a sem posuere eleifend. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
+              </div>
+
+              <form class="mb-3">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Address 2</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected="">Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
+
+              <div class="card-columns">
+                <div class="card">
+                  <h5 class="card-header">Featured</h5>
+                  <div class="card-body">
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <h5 class="card-header">Featured</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+                  <div class="card p-3">
+                    <blockquote class="blockquote mb-0 card-body">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                      <footer class="blockquote-footer">
+                        <small class="text-muted">
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </small>
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="card">
+                    <img class="card-img-top" src="https://via.placeholder.com/500x200" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                  <div class="card bg-primary text-white text-center p-3">
+                    <blockquote class="blockquote mb-0">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                      <footer class="blockquote-footer">
+                        <small>
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </small>
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="card text-center">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img class="card-img" src="https://via.placeholder.com/600x400" alt="Card image">
+                  </div>
+                  <div class="card p-3 text-right">
+                    <blockquote class="blockquote mb-0">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                      <footer class="blockquote-footer">
+                        <small class="text-muted">
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </small>
+                      </footer>
+                    </blockquote>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="
+    background: #1d2c3a;
+">
+      <div class="container text-center text-white-50" style="margin-top: 0px;">
+      <small style="line-height: 1.5;">All rights reserved <a href="https://www.lionbytes.net" target="_blank" rel="noreferrer">
+        <img src="https://lionbytes.net/images/lionbytes.webp" alt="Lionbytes" title="Lionbytes" style="
+          width: 77px;
+          margin: 0px -5px 0;
+          image-rendering: -webkit-optimize-contrast;
+        ">
+        </a> 2020.
+      </small>
+
+      <a class="float-right" href="#" title="Back to top" style="
+    font-size: 20pt;
+    color: #f4036e;
+">
+    <i class="fa fa-chevron-circle-up fa-lg"></i>
+</a>
+    </div>
+    </footer>
+  </main>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="sculprit.js"></script>
+
+</body>
+</html>

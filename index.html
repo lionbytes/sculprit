@@ -1,340 +1,90 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Cairo:200,300,400,600,700,900|Changa:200,300,400,500,600,700,800|El+Messiri:400,500,600,700|Reem+Kufi&amp;display=swap&amp;subset=arabic,cyrillic,latin-ext" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <title>Sculprit – Online Visual DOM Editing Tool </title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="favicon.ico" type="image/x-icon" rel="icon">
-  <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Signin Template · Bootstrap v5.0</title>
 
-</head>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
-<body style="background-color: rgb(52 58 64);">
-  <main role="main">
-    <section class="jumbotron mb-0 py-4" style="background-color: #1d2c3a;">
-      <div class="container">
-    <div class="row">
-        <div class="px-3">
-        <h1 class="m-0"><img src="logo5-dark.png" alt="Sculprit">
+    
 
-</h1>
-        <p class="lead mx-auto text-center mb-1" style="max-width: 740px;font-size: 13pt;color: #747c85 !important;">
-Visual DOM Sculptor
-</p>
+    <!-- Bootstrap core CSS -->
+<link href="bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+    <main class="form-signin">
+      <form>
+        <h1 style="
+        font-weight: 700;
+        letter-spacing: 0px;
+        font-size: 47px;
+        margin: 0 0 0x;
+        color: #444;
+    ">
+        <img src="https://sculprit.com/logo6.png"></h1>
+        <h1 class="h6 mb-3 fw-normal text-muted text-uppercase" style="
+    letter-spacing: 1px;
+"><small>Please sign in</small></h1>
+    
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
         </div>
-        <div class="col">
-      <pre class="text-light pt-3 px-5" style="
-    column-count: 2;
-    column-gap: 20px;
-    list-style-position: inside;
-    font-family: monospace;
-    font-weight: bold;
-    column-rule: 1px solid #3f4750;
-">Select            Ctrl + Click
-Deselect          Escape
-Delete            Alt + Click
-Undo              Ctrl + Z
-Redo              Ctrl + Y
-Cut               Ctrl + Mid-Click
-Copy              Shift + Mid-Click
-Paste             Mid-Click
-Move Up DOM       A, Arrow Left
-Move Down DOM     D, Arrow Right
-Move Over         A, Arrow Left
-Move Under        D, Arrow Right
-Exit Parent Up    W, Arrow Up
-Exit Parent Down  S, Arrow Down</pre><small class="text-light pt-2 px-5 mb-0" style="
-    font-family: monospace;
-"><span class="mr-3" style="
-    color: #6e7f91;
-">Cursor action indications:</span><span class="badge badge-primary position-relative ml-0" style="
-    background: #c3f4a8;
-    font-size: 7pt;
-    top: -2px;
-    outline: 2px dashed #609742;
-">&nbsp;&nbsp;&nbsp;</span> Selected <span class="badge badge-primary position-relative ml-4" style="
-    background: transparent;
-    font-size: 7pt;
-    top: -2px;
-    outline: 2px dashed #f02dff;
-">&nbsp;&nbsp;&nbsp;</span> Parent <span class="badge badge-primary position-relative ml-4" style="
-    background: #ffe38c;
-    font-size: 7pt;
-    top: -2px;
-">&nbsp;&nbsp;&nbsp;</span> Hovered</small></div></div>
-</div>
-    </section>
-    <div class="toolbar card-header text-white" style="background-color: #243444;">
-            <div class="container">
-<div class="col"><div class="row">
-              <div class="col my-1" style="font-size: 13pt;color: #8a94a7;">
-                <span>Sculprit Toolbar</span>
-              </div>
-              <button type="button" class="btn btn-primary btn-sm mx-1 add disabled" disabled=""><span class="fa fa-plus"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 library disabled" disabled=""><span class="fa fa-th"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 memo disabled" disabled=""><strong>M</strong></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 save" onclick="saveFile();"><span class="fa fa-save"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 pastecode" onclick="pasteClipboard();"><span class="fa fa-paste"></span></button>
-              
-              <button type="button" class="btn btn-primary btn-sm mx-1 expand" onclick="a_ExpandMode();"><span class="fa fa-arrows-alt"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 dirltr" onclick="dirLeft();"><span class="fa fa-align-left"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 dirrtl" onclick="dirRight();"><span class="fa fa-align-right"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 compress" onclick="compressExp();"><span class="fa fa-compress"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 expand" onclick="expandExp();"><span class="fa fa-expand"></span></button>
-              
-              <button type="button" class="btn btn-primary btn-sm mx-1 undo" onclick="a_Undo();"><span class="fa fa-history"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 redo" onclick="a_Redo();"><span class="fa fa-repeat"></span></button>
-              <button type="button" class="btn btn-primary btn-sm mx-1 copycode"><span class="fa fa-clone"></span> <span class="fa fa-code"></span></button>
-            </div></div></div>
-          </div><div class="container-fluid py-5 mb-4" style="background-color: #e9ecef;">
-      <div class="container marketing">
-        <div class="card">
-          
-          <div class="card-body">
-            <div id="experiment" class="experiment dir-ltr text-left">
-              <div class="locator position-absolute pt-2 px-3 rounded d-none" style="">
-                <div class="row">
-                  <div class="col-12 text-left">
-                    <div><small>
-                      <span class="mr-1 text-muted">Parent: </span>
-                      <span class="parent">
-                        <strong class="tagname "></strong>
-                        <span class="idname text-warning"></span>
-                        <span class="classname text-light"></span>
-                        <strong class="tagclosing  d-none" style="">/&gt;</strong>
-                      </span>
-                    </small></div>
-                    
-                    <div class="itself">                      
-                      <span class="tagname h6"></span>
-                      <span class="idname text-warning h6"></span>
-                      <span class="classname text-light h6"></span>
-                      <span class="tagclosing h6 d-none" style="">/&gt;</span>
-                    </div>
-  
-                  </div>
-                </div>
-                <div class="row highlighted">
-                  <small class="col px-2">
-                    <span class="tagname">&lt;div</span>
-                    <span class="idname"> </span>
-                    <span class="classname"> .col-12</span>
-                    <span class="tagclosing d-none" style="">/&gt;</span>
-                  </small>
-                </div>
-  
-              </div>
-              <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <a class="navbar-brand" href="#">
-    <img src="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-  </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-      </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+    
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-dark" type="submit" style="
+        background: #f4136e;
+        border-color: #f4136e;
+    ">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
       </form>
-    </div>
-  </nav>
-<div class="row">
-                <div class="col-12">
-                  <div class="alert alert-success" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="alert-heading">Well done!</h4>
-                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
-                      longer so that you can see how spacing within an alert works with this kind of content.</p>
-                    <hr>
-                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                  </div>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <span class="fa fa-times-circle"></span>
-                    <strong class="mx-1">Holy guacamole!</strong> You should check in on some of those fields below.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <span class="fa fa-exclamation-triangle"></span>
-                    <strong class="mx-1">Holy guacamole!</strong> You should check in on some of those fields below.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-3 py-3">
-                <h1 class="bd-title" id="content">Introduction</h1>
-                <p class="bd-lead">Morbi id felis diam. Maecenas auctor pellentesque odio a porta. Integer fringilla sagittis elit in tempor. Etiam malesuada lectus a sem posuere eleifend. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-              </div>
-
-              <form class="mb-3">
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress2">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control">
-                      <option selected="">Choose...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Check me out
-                    </label>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-              </form>
-
-              <div class="card-columns">
-                <div class="card">
-                  <h5 class="card-header">Featured</h5>
-                  <div class="card-body">
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <h5 class="card-header">Featured</h5>
-                  <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-                  <div class="card p-3">
-                    <blockquote class="blockquote mb-0 card-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                      <footer class="blockquote-footer">
-                        <small class="text-muted">
-                          Someone famous in <cite title="Source Title">Source Title</cite>
-                        </small>
-                      </footer>
-                    </blockquote>
-                  </div>
-                  <div class="card">
-                    <img class="card-img-top" src="http://placehold.it/500x200" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                  <div class="card bg-primary text-white text-center p-3">
-                    <blockquote class="blockquote mb-0">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                      <footer class="blockquote-footer">
-                        <small>
-                          Someone famous in <cite title="Source Title">Source Title</cite>
-                        </small>
-                      </footer>
-                    </blockquote>
-                  </div>
-                  <div class="card text-center">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img class="card-img" src="http://placehold.it/600x400" alt="Card image">
-                  </div>
-                  <div class="card p-3 text-right">
-                    <blockquote class="blockquote mb-0">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                      <footer class="blockquote-footer">
-                        <small class="text-muted">
-                          Someone famous in <cite title="Source Title">Source Title</cite>
-                        </small>
-                      </footer>
-                    </blockquote>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                </div>
-
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
-    </footer>
-  </main>
-
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-  <script src="sculprit.js"></script>
+    </main>
 
 </body>
 </html>

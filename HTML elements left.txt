@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176077123-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-176077123-1');
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NKP8FJT');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- App Theme Color -->
+  <meta name='theme-color' content='#3c3429'>
+
+  <title>رمز ﷻ جل جلاله | رمز ﷺ صلى الله عليه وسلم</title>
+
+  <!-- Social Media Meta -->
+    <!-- Twitter protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="رمز ﷻ جل جلاله | رمز ﷺ صلى الله عليه وسلم">
+    <meta name="twitter:description" content="موقع لتسهيل الوصول إلى الرموز الرقمية الإسلامية الشائع استعمالها على شبكة الإنترنت">
+    <meta name="twitter:image" content="/icon-512.png">
+    <meta name="twitter:image:secure_url" content="/icon-512.png"/>
+    <meta name="twitter:site" content="رمز ﷻ و ﷺ "/>
+    <meta name="twitter:url" content="https://ramz.info"/>
+
+    <!-- Open Graph protocol -->
+    <meta property="og:site_name" content="رمز ﷻ و ﷺ"/>
+    <meta property="og:url" content="https://ramz.info">
+    <meta property="og:title" content="رمز ﷻ جل جلاله | رمز ﷺ صلى الله عليه وسلم">
+    <meta property="og:description" content="موقع لتسهيل الوصول إلى الرموز الرقمية الإسلامية الشائع استعمالها على شبكة الإنترنت">
+    <meta property="og:type" content="website" />
+
+    <meta property="og:image" content="/icon-512.png">
+    <meta property="og:image:secure_url" content="/icon-512.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon-57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon-72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon-114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon-144.png" />
+    <link rel="apple-touch-icon" sizes="600x600" href="/icon-600.png" />
+
+    <link rel="icon" sizes="512x512" href="/icon-512.png" />
+
+  <!-- Meta Info -->
+  <meta name="description" content="كيف وأين تجد رمز ﷻ وﷺ الإسلامي؟ موقع يسهل نسخ وإدراج وكتابة الاختصار لاستخدامه في ملفات الوورد ومتصفح الإنترنت من الكيبورد وغيره" />
+  <meta name="keywords" content="كيفية إدراج وكتابة اختصار أو رمز جل جلاله والصلاة على النبي في ملفات الوورد ومتصفح الإنترنت، كيف تكتب هذه الرموز الإسلامية بلوحة المفاتيح (الكيبورد) على الكمبيوتر والتابلت الايباد والجوال الآيفون والأندرويد، وتخصيص مفاتيح خاصة به للاستخدام" />
+
+  <meta name="date" content="October. 21, 2020">
+  <meta name="author" content="Lionbytes">
+  <link rel="author" href="/humans.txt" type="text/plain">
+
+  <!-- Manifest -->
+  <link rel='manifest' href='manifest.json'>
+
+  <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+  <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+</head>
+
+<body class="dir-rtl body-lang-top">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKP8FJT"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <style>
+    /* arabic */
+    @font-face {
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/cairo/v10/SLXGc1nY6HkvalIkTpu0xg.woff2) format('woff2');
+      unicode-range: U+0600-06FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE80-FEFC;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/cairo/v10/SLXGc1nY6HkvalIvTpu0xg.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/cairo/v10/SLXGc1nY6HkvalIhTps.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+  <script>
+    function copyRamz(ramz){
+      let clipboardTemp = document.createElement("textarea");
+      document.body.appendChild(clipboardTemp);
+      clipboardTemp.value = ramz;
+      clipboardTemp.select();
+      document.execCommand("copy");
+      document.body.removeChild(clipboardTemp);
+
+      copySuccessful();
+    }
+
+    // Show copy success message
+    function copySuccessful() {
+      $('.copysuccess').show().animate( { top: '-25px' } , 500 ).fadeOut(250);
+      setTimeout(function(){ $('.copysuccess').removeAttr('style'); }, 750);
+    }
+
+    // Closing Auto-Copy Modal
+    const autocopyModal = document.querySelector("#autocopyModal");
+    function closeModal() {
+      autocopyModal.classList.add('d-none') ;
+    }
+    document.addEventListener('keydown', (event) => {
+      if (event.key == 'Escape' && !autocopyModal.classList.contains('d-none')) { 
+        closeModal();
+      }
+    });
+    
+    let modalEscape = document.querySelector('#autocopyModal');
+      modalEscape.addEventListener( 'click', (event) => {
+          if (event.target.id === 'autocopyModal'){
+            closeModal();
+          }
+      });
+      
+  </script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script> -->
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
