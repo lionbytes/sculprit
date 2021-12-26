@@ -25,7 +25,7 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Expanded Mode – allows you to see overlapping elements~~
   - ~~Use tooltips to show an element's ID and class~~
 
-### Controls Basic Stage
+### Layout Controls Stage
   - ~~Sticky toolbar~~
   - ~~Distribute code to CSS, JS, HTML and JSON files~~
   - ~~Edit              Double click~~
@@ -33,27 +33,34 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Direction RTL/LTR~~
   - ~~Expanded Mode (keyboard) – allows you to see overlapping elements~~
   - ~~Lay proper foundation for mouse and keyboard controls and how they should cascade~~
-  - Click again deselects
-  - Turn some toolbar buttons into toggles
-  - Text left radio button uses default CSS files, and text right radio button uses custom RTL CSS files
-  - Copy Code to Clipboard (keyboard)
-  - Paste Code from Clipboard (keyboard)
-  - Save (keyboard)
-  - Move Up (Shift + Up)
-  - Move Down (Shift + Down)
-  - Move Out Up (Ctrl + Shift + Up)
-  - Move Out Down (Ctrl + Shift + Down)
-  - Margin (Ctrl + WASD)
-  - Padding (Ctrl + WASD)
-  - Size Height Up/Down
-  - Float Left/Right/None
+  - ~~Click again deselects~~
+  - ~~Copy Code to Clipboard (keyboard)~~
+  - ~~Paste Code from Clipboard (keyboard)~~
+  - Col Size/Text Size: Alt + URDL
+  - Width/Height: Ctrl + Alt + URDL
+  - Margin      Ctrl + WASD
+  - Padding     Shift + WASD
+  - Margin Inv. Alt + Ctrl + WASD
+  - Padding Inv.Alt + Shift + WASD
+  - Edit ID     Shift + Alt 	 
   - Viewport Cycle
+  - Locator always showing hovered element
+  - Highlight element and show locator only when Ctrl/Alt/Shift pressed
+  - Clear residual classes after undoing whe removing an item from DOM
+
+### Finalize First Cycle
+  - Test usage
+
+### Theme Controls Stage
+  - Save (keyboard)
+  - Float Left/Right/None
   - Variate Style Primary 
   - Variate Style Secondary 
   - Variate Style Tertiary 
-  - Locator always showing hovered element
+  - Turn some toolbar buttons into toggles
+  - Text left radio button uses default CSS files, and text right radio button uses custom RTL CSS files
 
-### Controls Advanced Stage
+### Advanced Controls Stage
   - History: Enable saving certain states of code structure using an M memory button
   - Erase
   - Multiple Select
