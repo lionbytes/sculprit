@@ -14,12 +14,12 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Paste Code from Clipboard (keyboard)~~
   - Col Size/Text Size: Alt + URDL
   - Width/Height: Ctrl + Alt + URDL
-  - Margin      Ctrl + WASD
-  - Padding     Shift + WASD
-  - Margin Inv. Alt + Ctrl + WASD
-  - Padding Inv.Alt + Shift + WASD
-  - Edit ID     Shift + Alt 	 
-  - Viewport Cycle
+  - Margin        Ctrl + WASD
+  - Padding       Alt + WASD
+  - Margin Inv.   Ctrl + Shift + WASD
+  - Padding Inv.  Alt + Shift + WASD
+  - Edit ID       Shift + Alt + DblClick
+  - Viewport Cycle input
   - Locator always showing hovered element
   - Highlight element and show locator only when Ctrl/Alt/Shift pressed
   - Clear residual classes after undoing whe removing an item from DOM
