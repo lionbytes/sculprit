@@ -12,13 +12,13 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Click again deselects~~
   - ~~Copy Code to Clipboard (keyboard)~~
   - ~~Paste Code from Clipboard (keyboard)~~
-  - Navigate: 
+  - Navigate (URDL): 
     - Nudge		                    URDL
     - Select sibling             URDL
     - Select parent/child        Shift + URDL
     - Move selected element      Ctrl + URDL 
     - Exit selected parent       Ctrl + Shift + URDL 
-  - Resize:
+  - Resize (Alt+URDL):
     - Column Resize              Alt + R/L
     - Text Resize                Alt + U/D
     - Resize Width %             Alt + R/L
