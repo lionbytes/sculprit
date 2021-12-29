@@ -15,7 +15,7 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - Navigate: 
     - Nudge		                    URDL
     - Select sibling             URDL
-    - Select parent              Shift + URDL
+    - Select parent/child        Shift + URDL
     - Move selected element      Ctrl + URDL 
     - Exit selected parent       Ctrl + Shift + URDL 
   - Resize:
