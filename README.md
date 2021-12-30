@@ -13,23 +13,33 @@ Destruction is much faster than construction, a universal rule you can rely on t
   - ~~Copy Code to Clipboard (keyboard)~~
   - ~~Paste Code from Clipboard (keyboard)~~
   - Navigate (URDL): 
-    - Nudge		                    URDL
-    - Select sibling             URDL
-    - Select parent/child        Shift + URDL
-    - Move selected element      Ctrl + URDL 
-    - Exit selected parent       Ctrl + Shift + URDL 
+    - Nudge		                URDL
+    - Select sibling         URDL
+    - Select parent/child    Shift + URDL
+    - Move selected element  Ctrl + URDL 
+    - Exit selected parent   Ctrl + Shift + URDL 
   - Resize (Alt+URDL):
-    - Column Resize              Alt + R/L
-    - Text Resize                Alt + U/D
-    - Resize Width %             Alt + R/L
-    - Resize Height %            Alt + U/D
-  - Col Size/Text Size: Alt + URDL
-  - Width/Height: Ctrl + Alt + URDL
-  - Margin        Ctrl + WASD
-  - Padding       Alt + WASD
-  - Margin Inv.   Ctrl + Shift + WASD
-  - Padding Inv.  Alt + Shift + WASD
-  - Edit ID       Shift + Alt + DblClick
+    - Column Resize          Alt + R/L
+    - Element Resize         Alt + U/D (Text, Buttons, Input, etc.)
+    - Resize Width %         Alt + Ctrl + R/L
+    - Resize Height %        Alt + Ctrl + U/D
+  - Spacing
+    - Margin                 Ctrl + URDL
+    - Margin Inv.            Ctrl + Shift + URDL
+    - Padding                Alt + URDL
+    - Padding Inv.           Alt + Shift + URDL
+
+  - Flex (WASD)
+    - Margin                 Ctrl + WASD
+    - Margin Inv.            Ctrl + Shift + WASD
+    - Padding                Alt + WASD
+    - Padding Inv.           Alt + Shift + WASD
+
+  - Edits 
+    - Edit ID                  Shift + Alt + DblClick
+    - Edit Classes             Ctrl + F2     
+    - Edit ID                  Shift + F2
+
   - Viewport Cycle input
   - Locator always showing hovered element
   - Highlight element and show locator only when Ctrl/Alt/Shift pressed
